@@ -198,7 +198,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+<<<<<<< HEAD
     <Compile Include="Core\Administrator.cs" />
+=======
+    <Compile Include="Core\administrator.cs" />
+>>>>>>> origin/master
     <Compile Include="Core\Category.cs" />
     <Compile Include="Core\Security.cs" />
     <Compile Include="Core\User.cs" />
@@ -225,6 +229,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\easyexam - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\easyexam - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
