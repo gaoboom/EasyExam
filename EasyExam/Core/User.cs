@@ -18,6 +18,7 @@ namespace EasyExam.Core
         /// <summary>
         /// 登录名
         /// </summary>
+        [Required(ErrorMessage = "必须输入{0}")]
         [StringLength(50, MinimumLength = 4, ErrorMessage = "{0}长度为{2}-{1}个字符")]
         [Display(Name = "登录名")]
         public string Username { get; set; }
@@ -25,6 +26,7 @@ namespace EasyExam.Core
         /// <summary>
         /// 登录密码
         /// </summary>
+        [Required(ErrorMessage = "必须输入{0}")]
         [DataType(DataType.Password)]
         [StringLength(256, ErrorMessage = "{0}长度少于{1}个字符")]
         [Display(Name = "密码")]
