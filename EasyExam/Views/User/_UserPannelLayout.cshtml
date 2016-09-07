@@ -18,23 +18,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Easy Exam 考试系统", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Easy Exam 用户操作台", "Index", "User", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                @*<ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("主页", "Index", "Home")</li>
-                    <li>@Html.ActionLink("关于", "About", "Home")</li>
-                    <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
-                </ul>*@
+                <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("考试", "Exam", "User")</li>
+            <li>@Html.ActionLink("关于", "About", "Home")</li>
+            <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
+        </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-4">@RenderSection("SideNav", false)</div>
+            <div class="col-lg-9 col-md-9 col-sm-8">@RenderBody()</div>
+        </div>
     </div>
     <footer class="panel-footer navbar-fixed-bottom">
-        <p>Copyleft @DateTime.Now.Year -@Html.ActionLink("Easy Exam", "Index", "Home")</p>
+        <p>Copyleft @DateTime.Now.Year - @Html.ActionLink("Easy Exam", "Index","Home")</p>
     </footer>
 
     @Scripts.Render("~/bundles/jquery")

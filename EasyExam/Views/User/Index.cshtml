@@ -1,0 +1,13 @@
+﻿@{ Layout = "_UserPannelLayout.cshtml";}
+
+@{
+    ViewBag.Title = "用户操作台";
+}
+
+
+@section SideNav{@Html.Partial("SideNavPartialView")}
+
+<ol class="breadcrumb">
+    <li><span class="glyphicon glyphicon-home"></span>  @Html.ActionLink("首页", "Index", "User")</li>
+    <li class="active">@Html.ActionLink("考试", "Exam", "User")</li>
+</ol>

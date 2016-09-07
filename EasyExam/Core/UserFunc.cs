@@ -25,5 +25,11 @@ namespace EasyExam.Core
             }
             return _resp;
         }
+
+        public User Find(string username)
+        {
+            var _user = dbContext.Users.First(u => u.Username == username);
+            return _user;
+        }
     }
 }

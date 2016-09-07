@@ -34,10 +34,27 @@ namespace EasyExam.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                UserFunc userFunc = new UserFunc();
+                var _response = userFunc.Verify(userLoginViewModel.Username, userLoginViewModel.Password);
+                if(_response.Code==1)
+                {
+                    var _user = userFunc.Find(userLoginViewModel.Username);
+                    Session.Add("UserID", _user.UserID);
+                    Session.Add("Username", _user.Username);
+                    return RedirectToAction("Index", "User");
+                }
             }
             return View(userLoginViewModel);
         }
 
+        /// <summary>
+        /// 注销
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

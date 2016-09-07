@@ -22,7 +22,7 @@ namespace EasyExam.Core
         /// </summary>
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            filterContext.Result = new RedirectResult("~/Control/User/Login");
+            filterContext.Result = new RedirectResult("~/User/Login");
         }
     }
 }
