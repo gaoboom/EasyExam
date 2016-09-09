@@ -208,6 +208,7 @@
     <Compile Include="Core\User.cs" />
     <Compile Include="Core\UserAuthorizeAttribute.cs" />
     <Compile Include="Core\UserFunc.cs" />
+    <Compile Include="EXT\HttpRequestMessageExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
