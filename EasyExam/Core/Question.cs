@@ -57,6 +57,13 @@ namespace EasyExam.Core
         public string OptionD { get; set; }
 
         /// <summary>
+        /// 选项E
+        /// </summary>
+        [Display(Name = "选项E")]
+        public string OptionE { get; set; }
+
+
+        /// <summary>
         /// 正确答案，英文逗号分隔，如（A,B,C）
         /// </summary>
         [Display(Name = "正确答案")]
