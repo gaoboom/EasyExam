@@ -1,10 +1,12 @@
 ﻿using EasyExam.Core;
 using EasyExam.ViewModel;
+using EasyExam.EXT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net.Http;
 
 namespace EasyExam.Controllers
 {
@@ -41,7 +43,16 @@ namespace EasyExam.Controllers
                     var _user = userFunc.Find(userLoginViewModel.Username);
                     Session.Add("UserID", _user.UserID);
                     Session.Add("Username", _user.Username);
+                    userFunc.UpdateUserLoginInfo(_user.UserID, DateTime.Now,Request.ServerVariables["REMOTE_ADDR"]);
                     return RedirectToAction("Index", "User");
+                }
+                else if(_response.Code == 3)
+                {
+                    ModelState.AddModelError("Username Or Password", _response.Message);
+                }
+                else
+                {
+                    ModelState.AddModelError("", _response.Message);
                 }
             }
             return View(userLoginViewModel);
