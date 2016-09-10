@@ -205,6 +205,7 @@
     <Compile Include="Core\Question.cs" />
     <Compile Include="Core\Response.cs" />
     <Compile Include="Core\Security.cs" />
+    <Compile Include="Core\Test.cs" />
     <Compile Include="Core\User.cs" />
     <Compile Include="Core\UserAuthorizeAttribute.cs" />
     <Compile Include="Core\UserFunc.cs" />
