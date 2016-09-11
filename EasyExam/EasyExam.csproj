@@ -202,6 +202,7 @@
     <Compile Include="Core\Administrator.cs" />
     <Compile Include="Core\Category.cs" />
     <Compile Include="Core\EasyExamContext.cs" />
+    <Compile Include="Core\Paper.cs" />
     <Compile Include="Core\Question.cs" />
     <Compile Include="Core\Response.cs" />
     <Compile Include="Core\Security.cs" />
