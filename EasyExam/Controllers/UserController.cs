@@ -29,6 +29,7 @@ namespace EasyExam.Controllers
             return View();
         }
 
+
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -43,7 +44,7 @@ namespace EasyExam.Controllers
                     var _user = userFunc.Find(userLoginViewModel.Username);
                     Session.Add("UserID", _user.UserID);
                     Session.Add("Username", _user.Username);
-                    userFunc.UpdateUserLoginInfo(_user.UserID, DateTime.Now,Request.ServerVariables["REMOTE_ADDR"]);
+                    userFunc.UpdateUserLoginInfo(_user.UserID, DateTime.Now,"127.0.0.1");
                     return RedirectToAction("Index", "User");
                 }
                 else if(_response.Code == 3)

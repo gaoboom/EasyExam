@@ -18,6 +18,8 @@ namespace EasyExam.Core
 
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<Paper> Papers { get; set; }
+
         public DbSet<Question> Questions { get; set; }
 
         public DbSet<Test> Tests { get; set; }
