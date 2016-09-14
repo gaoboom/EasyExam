@@ -13,5 +13,16 @@ namespace EasyExam.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
     }
 }
