@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyExam.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,7 @@ namespace EasyExam.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
+        [AdminAuthorize]
         public ActionResult Index()
         {
             return View();

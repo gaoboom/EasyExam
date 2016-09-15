@@ -200,6 +200,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Core\AdminAuthorizeAttribute.cs" />
     <Compile Include="Core\Administrator.cs" />
     <Compile Include="Core\Category.cs" />
     <Compile Include="Core\EasyExamContext.cs" />
