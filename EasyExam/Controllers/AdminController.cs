@@ -26,5 +26,15 @@ namespace EasyExam.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 注销
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
