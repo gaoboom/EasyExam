@@ -201,6 +201,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Core\AdminAuthorizeAttribute.cs" />
+    <Compile Include="Core\AdminFunc.cs" />
     <Compile Include="Core\Administrator.cs" />
     <Compile Include="Core\Category.cs" />
     <Compile Include="Core\EasyExamContext.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\AdminLoginViewModel.cs" />
     <Compile Include="ViewModel\UserLoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
