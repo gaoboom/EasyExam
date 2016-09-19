@@ -21,7 +21,7 @@ namespace EasyExam.ViewModel
         [Required(ErrorMessage = "必须输入{0}")]
         [StringLength(30, MinimumLength = 4, ErrorMessage = "{0}长度为{2}-{1}个字符")]
         [Display(Name = "登录名")]
-        public string Username { get; set; }
+        public string Accounts { get; set; }
 
         /// <summary>
         /// 登录密码
