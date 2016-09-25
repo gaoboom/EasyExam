@@ -301,7 +301,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\_AdminPannelLayout.cshtml" />
-    <Content Include="Views\Shared\AdminLoginPartial.cshtml" />
+    <Content Include="Views\Shared\_AdminLoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
