@@ -6,7 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Easy Exam 在线考试系统</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/bootstrapplugincss")
+    @RenderSection("style", required: false)
+
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/bootstrapplugin")
+    @RenderSection("scripts", required: false)
+
+
 
 </head>
 <body>
@@ -35,8 +44,5 @@
         <p>Copyleft @DateTime.Now.Year - @Html.ActionLink("Easy Exam", "Index", "Home")</p>
     </footer>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

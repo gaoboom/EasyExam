@@ -26,6 +26,13 @@ namespace EasyExam
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrapplugin").Include(
+                    "~/Scripts/bootstrap-treeview.min.js"
+                ));
+            bundles.Add(new StyleBundle("~/Content/bootstrapplugincss").Include(
+                    "~/Content/bootstrap-treeview.min.css"
+                ));
         }
     }
 }

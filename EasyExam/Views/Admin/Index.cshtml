@@ -3,5 +3,23 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@section SideNav{@Html.Partial("SideNavPartialView")}
+<div class="col-sm-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><span class="glyphicon glyphicon-cloud"></span> 考试管理</h3>
+        </div>
+        <div class="panel-body">
+            @Html.ActionLink("新建考试", "CreateExam", "Admin", new { area = "" }, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title"><span class="glyphicon glyphicon-cloud"></span> 分类管理</h3>
+        </div>
+        <div class="panel-body">
+            @Html.ActionLink("新建分类", "CreateCategory", "Admin", new { area = "" }, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>
 

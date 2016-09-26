@@ -35,7 +35,7 @@ namespace EasyExam.Core
         public Response UpdateAdminLoginInfo(int adminID, DateTime dt, string ip)
         {
             Response _resp = new Response();
-            var _admin = dbContext.Users.Find(adminID);
+            var _admin = dbContext.Administrators.Find(adminID);
             if (_admin == null)
             {
                 _resp.Code = 0;
@@ -43,8 +43,8 @@ namespace EasyExam.Core
             }
             else
             {
-                _admin.LastLoginIP = ip;
-                _admin.LastLoginTime = dt;
+                _admin.LoginIP = ip;
+                _admin.LoginTime = dt;
                 dbContext.SaveChanges();
             }
             return _resp;
