@@ -49,5 +49,21 @@ namespace EasyExam.Core
             dbContext.SaveChanges();
             return _resp;
         }
+
+        public List<Category> GetCategoryAndSort()
+        {
+            List<Category> _cateList = new List<Category>();
+
+            _cateList = dbContext.Categories.ToList();
+            for(int i=0;i<=_cateList.Count-1;i++)
+            {
+                if(_cateList[i].ParentID!=0)
+                {
+                    _cateList.Add(_cateList[i]);
+                    _cateList.Remove(_cateList[i]);
+                }
+            }
+            return _cateList;
+        }
     }
 }
