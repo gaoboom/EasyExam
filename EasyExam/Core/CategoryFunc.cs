@@ -36,5 +36,18 @@ namespace EasyExam.Core
             var _cate = dbContext.Categories.Find(cateID);
             return _cate;
         }
+
+        public Response Add(string catName,int parentID=0,string description="",int order=50)
+        {
+            Response _resp = new Response();
+            Category newCate = new Category();
+            newCate.Name = catName;
+            newCate.ParentID = parentID;
+            newCate.Description = description;
+            newCate.Order = order;
+            dbContext.Categories.Add(newCate);
+            dbContext.SaveChanges();
+            return _resp;
+        }
     }
 }

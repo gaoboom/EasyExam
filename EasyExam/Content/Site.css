@@ -45,3 +45,7 @@ footer p{margin:0;}
 
 /*User Control Pannel Main Content Pannel*/
 .panel-body p a{width:100%;}
+
+/*Admin Control Pannel Category Table*/
+#category-table{vertical-align:central;}
+#category-table input{width:40px;text-align:center;}

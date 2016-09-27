@@ -67,5 +67,15 @@ namespace EasyExam.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        /// <summary>
+        /// 栏目列表页
+        /// </summary>
+        /// <returns></returns>
+        [AdminAuthorize]
+        public ActionResult Category()
+        {
+
+            return View();
+        }
     }
 }
