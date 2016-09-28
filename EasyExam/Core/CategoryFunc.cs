@@ -55,6 +55,7 @@ namespace EasyExam.Core
             List<Category> _cateList = new List<Category>();
 
             _cateList = dbContext.Categories.ToList();
+            //将根栏目排在最前面
             for(int i=0;i<=_cateList.Count-1;i++)
             {
                 if(_cateList[i].ParentID!=0)
@@ -63,6 +64,7 @@ namespace EasyExam.Core
                     _cateList.Remove(_cateList[i]);
                 }
             }
+
             return _cateList;
         }
     }
