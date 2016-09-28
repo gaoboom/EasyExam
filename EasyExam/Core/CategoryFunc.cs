@@ -53,15 +53,23 @@ namespace EasyExam.Core
         public List<Category> GetCategoryAndSort()
         {
             List<Category> _cateList = new List<Category>();
-
+            List<Category> _cateListSorted = new List<Category>();
+            int _maxLevel = 0;
+            //获取所有栏目数据
             _cateList = dbContext.Categories.ToList();
-            //将根栏目排在最前面
-            for(int i=0;i<=_cateList.Count-1;i++)
+            //获取顶级栏目数据并按Order排序
+            _cateListSorted.AddRange(from c in _cateList where c.Level==0 orderby c.Order select c);
+            //获取最大子栏目级数
+            _maxLevel = (from c in _cateList orderby c.Level select c.Level).Max();
+            //开始按栏目级数进行遍历
+            for(int i=1;i<=_maxLevel;i++)
             {
-                if(_cateList[i].ParentID!=0)
+                //实例化当前级数栏目临时变量
+                List<Category> _cateListLevelTemp = new List<Category>();
+                for(int j=0;j<= _cateListSorted.Count-1;j++)
                 {
-                    _cateList.Add(_cateList[i]);
-                    _cateList.Remove(_cateList[i]);
+                    _cateListLevelTemp = (from c in _cateList where c.Level==i && c.ParentID== _cateListSorted[j].CategoryID orderby c.Order select c).ToList();
+                    _cateListSorted.InsertRange(j+1, _cateListLevelTemp);
                 }
             }
 

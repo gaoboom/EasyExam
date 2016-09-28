@@ -43,5 +43,10 @@ namespace EasyExam.Core
         [Display(Name = "栏目顺序")]
         public int Order { get; set; }
 
+        /// <summary>
+        /// 栏目级数，根目录为0，子目录为1，以此类推
+        /// </summary>
+        [Display(Name = "栏目级数")]
+        public int Level { get; set; }
     }
 }

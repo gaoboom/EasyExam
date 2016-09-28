@@ -74,7 +74,8 @@ namespace EasyExam.Controllers
         [AdminAuthorize]
         public ActionResult Category()
         {
-
+            CategoryFunc cf = new CategoryFunc();
+            cf.GetCategoryAndSort();
             return View();
         }
     }
