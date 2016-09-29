@@ -37,7 +37,7 @@ namespace EasyExam.Core
             return _cate;
         }
 
-        public Response Add(string catName,int parentID=0,string description="",int order=50)
+        public Response Add(string catName,int level,int parentID=0,string description="",int order=50)
         {
             Response _resp = new Response();
             Category newCate = new Category();
@@ -45,6 +45,7 @@ namespace EasyExam.Core
             newCate.ParentID = parentID;
             newCate.Description = description;
             newCate.Order = order;
+            newCate.Level = level;
             dbContext.Categories.Add(newCate);
             dbContext.SaveChanges();
             return _resp;
@@ -73,7 +74,7 @@ namespace EasyExam.Core
                 }
             }
 
-            return _cateList;
+            return _cateListSorted;
         }
     }
 }
