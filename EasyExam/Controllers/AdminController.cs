@@ -77,6 +77,7 @@ namespace EasyExam.Controllers
             CategoryFunc cf = new CategoryFunc();
             List<Category> ctList = new List<Category>();
             ctList=cf.GetCategoryAndSort();
+            ViewBag.Title = "栏目管理";
             return View(ctList);
         }
     }
