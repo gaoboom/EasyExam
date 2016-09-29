@@ -75,8 +75,9 @@ namespace EasyExam.Controllers
         public ActionResult Category()
         {
             CategoryFunc cf = new CategoryFunc();
-            cf.GetCategoryAndSort();
-            return View();
+            List<Category> ctList = new List<Category>();
+            ctList=cf.GetCategoryAndSort();
+            return View(ctList);
         }
     }
 }

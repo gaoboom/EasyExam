@@ -1,4 +1,6 @@
-﻿@{ Layout = "_AdminPannelLayout.cshtml";}
+﻿@model IEnumerable<EasyExam.Core.Category>
+
+@{ Layout = "_AdminPannelLayout.cshtml";}
 
 @{
     ViewBag.Title = "用户操作台";
@@ -18,45 +20,26 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>根栏目1</td>
-                <td>根栏目1的说明</td>
-                <td>
-                    @Html.ActionLink("添加子栏目", "CreateExam", "Admin", new { area = "" }, new { @class = "btn btn-primary btn-sm" })
-                    @Html.ActionLink("修改", "CreateExam", "Admin", new { area = "" }, new { @class = "btn btn-info btn-sm" })
-                    @Html.ActionLink("删除", "CreateExam", "Admin", new { area = "" }, new { @class = "btn btn-danger btn-sm" })
-                </td>
-                <td>
-                    <input type="text" value="50" />
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>| - 根栏目1的子栏目</td>
-                <td>根栏目1的子栏目1说明</td>
-                <td>
-                    @Html.ActionLink("添加子栏目", "CreateExam", "Admin", new { area = "" }, new { @class = "btn btn-primary btn-sm" })
-                    @Html.ActionLink("修改", "CreateExam", "Admin", new { area = "" }, new { @class = "btn btn-info btn-sm" })
-                    @Html.ActionLink("删除", "CreateExam", "Admin", new { area = "" }, new { @class = "btn btn-danger btn-sm" })
-                </td>
-                <td>
-                    <input type="text" value="50" />
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>| - | - 根栏目1的子栏目1的子栏目1</td>
-                <td>根栏目1的子栏目1说明</td>
-                <td>
-                    @Html.ActionLink("添加子栏目", "CreateExam", "Admin", new { area = "" }, new { @class = "btn btn-primary btn-sm" })
-                    @Html.ActionLink("修改", "CreateExam", "Admin", new { area = "" }, new { @class = "btn btn-info btn-sm" })
-                    @Html.ActionLink("删除", "CreateExam", "Admin", new { area = "" }, new { @class = "btn btn-danger btn-sm" })
-                </td>
-                <td>
-                    <input type="text" value="50" />
-                </td>
-            </tr>
+            @foreach(var Category in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => Category.CategoryID)</td>
+                    <td>
+                        @for (int i = 0; i < Category.Level; i++)
+                        {
+                            @Html.Raw("| - ")
+                        }
+                        @Html.DisplayFor(modelItem => Category.Name)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => Category.Description)</td>
+                    <td>
+                        @Html.ActionLink("添加子栏目", "CreateCategory", "Admin", new { id = Category.CategoryID }, new { @class = "btn btn-primary btn-sm" })
+                        @Html.ActionLink("修改", "ModifyCategory", "Admin", new { id = Category.CategoryID }, new { @class = "btn btn-primary btn-sm" })
+                        @Html.ActionLink("删除", "DeleteCategory", "Admin", new { id = Category.CategoryID }, new { @class = "btn btn-primary btn-sm" })
+                    </td>
+                    <td>@Html.TextBox("CategoryID_"+ Category.CategoryID,Category.Order)</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
