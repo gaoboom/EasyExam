@@ -80,5 +80,45 @@ namespace EasyExam.Controllers
             ViewBag.Title = "栏目管理";
             return View(ctList);
         }
+
+        /// <summary>
+        /// 创建栏目Get
+        /// </summary>
+        /// <param name="id">父栏目ID，如果为空，设置为0</param>
+        /// <returns></returns>
+        [AdminAuthorize]
+        public ActionResult CreateCategory(int? id)
+        {
+            Category _pcate = new Category();
+            CategoryFunc cf = new CategoryFunc();
+            int pid = 0;
+            //当参数id为空时，表示创建根栏目，父栏目id设为0
+            if (id==null)
+            {
+                pid = 0;
+            }
+            //当参数id不为整数时，强制设定父栏目id为0
+            else if(id.GetType()!=typeof(int))
+            {
+                pid = 0;
+            }
+            else
+            {
+                pid = (int)id;
+            }
+            if(cf.Find(pid) == null)
+            {
+                _pcate.CategoryID = 0;
+                _pcate.Name = "根栏目";
+                _pcate.ParentID = -1;
+                _pcate.Level = -1;
+            }
+            else
+            {
+                _pcate = cf.Find(pid);
+            }
+            ViewBag.Title = "创建栏目";
+            return View(_pcate);
+        }
     }
 }
