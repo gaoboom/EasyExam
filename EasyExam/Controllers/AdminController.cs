@@ -109,7 +109,7 @@ namespace EasyExam.Controllers
             if(cf.Find(pid) == null)
             {
                 _pcate.CategoryID = 0;
-                _pcate.Name = "根栏目";
+                _pcate.Name = "无";
                 _pcate.ParentID = -1;
                 _pcate.Level = -1;
             }
