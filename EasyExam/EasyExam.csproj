@@ -229,6 +229,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\AdminLoginViewModel.cs" />
+    <Compile Include="ViewModel\CategoryAddViewModel.cs" />
     <Compile Include="ViewModel\UserLoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -90,6 +90,7 @@ namespace EasyExam.Controllers
         public ActionResult CreateCategory(int? id)
         {
             Category _pcate = new Category();
+            CategoryAddViewModel _newCate = new CategoryAddViewModel();
             CategoryFunc cf = new CategoryFunc();
             int pid = 0;
             //当参数id为空时，表示创建根栏目，父栏目id设为0
@@ -108,17 +109,45 @@ namespace EasyExam.Controllers
             }
             if(cf.Find(pid) == null)
             {
-                _pcate.CategoryID = 0;
-                _pcate.Name = "无";
-                _pcate.ParentID = -1;
-                _pcate.Level = -1;
+                _newCate.PName = "无";
+                _newCate.ParentID = 0;
+                _newCate.Order = 50;
+                _newCate.Level = 0;
             }
             else
             {
                 _pcate = cf.Find(pid);
+                _newCate.PName = _pcate.Name;
+                _newCate.ParentID = _pcate.CategoryID;
+                _newCate.Order = 50;
+                _newCate.Level = _pcate.Level + 1;
             }
-            ViewBag.Title = "创建栏目";
-            return View(_pcate);
+            ViewBag.Title = "添加栏目";
+            return View(_newCate);
+        }
+
+        [AdminAuthorize]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult CreateCategory(CategoryAddViewModel newCateVM)
+        {
+            if(ModelState.IsValid)
+            {
+                CategoryFunc cf = new CategoryFunc();
+                Category newCate = new Category();
+                newCate.Name = newCateVM.Name;
+                newCate.ParentID = newCateVM.ParentID;
+                newCate.Description = newCateVM.Description;
+                newCate.Order = newCateVM.Order;
+                newCate.Level = newCateVM.Level;
+                cf.Add(newCate);
+                return RedirectToAction("Category", "Admin");
+            }
+            else
+            {
+                return View(newCateVM);
+            }
+            
         }
     }
 }

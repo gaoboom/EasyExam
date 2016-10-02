@@ -4,16 +4,16 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace EasyExam.Core
+namespace EasyExam.ViewModel
 {
     /// <summary>
-    /// 栏目模型类
+    /// 栏目创建viewmodel
+    /// <remarks>
+    /// Created at 2016.10.02
+    /// </remarks>
     /// </summary>
-    public class Category
+    public class CategoryAddViewModel
     {
-        [Key]
-        public int CategoryID { get; set; }
-
         /// <summary>
         /// 栏目名称
         /// </summary>
@@ -28,6 +28,15 @@ namespace EasyExam.Core
         [Required(ErrorMessage = "必填")]
         [Display(Name = "父栏目ID")]
         public int ParentID { get; set; }
+
+        /// <summary>
+        /// 父栏目名称
+        /// </summary>
+        [Required(ErrorMessage = "{0}必填")]
+        [StringLength(50, ErrorMessage = "不得多于{0}个字")]
+        [Display(Name = "父栏目名称")]
+        public string PName { get; set; }
+
 
         /// <summary>
         /// 栏目说明
@@ -48,5 +57,6 @@ namespace EasyExam.Core
         /// </summary>
         [Display(Name = "栏目级数")]
         public int Level { get; set; }
+
     }
 }
