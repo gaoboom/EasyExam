@@ -147,7 +147,47 @@ namespace EasyExam.Controllers
             {
                 return View(newCateVM);
             }
-            
+        }
+
+        /// <summary>
+        /// 修改栏目get
+        /// </summary>
+        /// <param name="id">栏目ID，如果为空，返回栏目首页</param>
+        /// <returns></returns>
+        [AdminAuthorize]
+        public ActionResult ModifyCategory(int? id)
+        {
+            ViewBag.Title = "修改栏目";
+            CategoryFunc cf = new CategoryFunc();
+            Category _cate = new Category();
+            if (id==null || id.GetType() != typeof(int))
+            {
+                return RedirectToAction("Category", "Admin");
+            }
+            else if(cf.Find((int)id)==null)
+            {
+                return RedirectToAction("Category", "Admin");
+            }
+            else
+            {
+                _cate = cf.Find((int)id);
+                CategoryAddViewModel _cateVM = new CategoryAddViewModel();
+                if(_cate.ParentID==0)
+                {
+                    _cateVM.PName = "无";
+                }
+                else
+                {
+                    _cateVM.PName = cf.Find(_cate.ParentID).Name;
+                }
+                
+                _cateVM.ParentID = _cate.ParentID;
+                _cateVM.Name = _cate.Name;
+                _cateVM.Description = _cate.Description;
+                _cateVM.Order = _cate.Order;
+                _cateVM.Level = _cate.Level;
+                return View(_cateVM);
+            }
         }
     }
 }
