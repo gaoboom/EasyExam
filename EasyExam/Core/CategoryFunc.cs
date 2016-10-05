@@ -45,6 +45,14 @@ namespace EasyExam.Core
             return _resp;
         }
 
+        public Response Delete(Category deleCate)
+        {
+            Response _resp = new Response();
+            dbContext.Categories.Remove(deleCate);
+            dbContext.SaveChanges();
+            return _resp;
+        }
+
         public List<Category> GetCategoryAndSort()
         {
             List<Category> _cateList = new List<Category>();
