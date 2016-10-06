@@ -186,7 +186,36 @@ namespace EasyExam.Controllers
                 _cateVM.Description = _cate.Description;
                 _cateVM.Order = _cate.Order;
                 _cateVM.Level = _cate.Level;
+                ViewBag.CategoryID = _cate.CategoryID;
                 return View(_cateVM);
+            }
+        }
+
+        /// <summary>
+        /// 修改栏目post
+        /// </summary>
+        /// <param name="cateVM">栏目ViewModel</param>
+        /// <returns></returns>
+        [AdminAuthorize,HttpPost,ValidateAntiForgeryToken]
+        public ActionResult ModifyCategory(CategoryAddViewModel cateVM,int categoryID)
+        {
+            ViewBag.Title = "修改栏目";
+            CategoryFunc cf = new CategoryFunc();
+            Category _cate = new Category();
+            if(ModelState.IsValid)
+            {
+                _cate.CategoryID = categoryID;
+                _cate.Name = cateVM.Name;
+                _cate.ParentID = cateVM.ParentID;
+                _cate.Description = cateVM.Description;
+                _cate.Order = cateVM.Order;
+                _cate.Level = cateVM.Level;
+                cf.Modify(_cate);
+                return RedirectToAction("Category", "Admin");
+            }
+            else
+            {
+                return View(cateVM);
             }
         }
     }

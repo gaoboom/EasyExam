@@ -15,6 +15,8 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+        <input type="text" id="CategoryID" name="CategoryID" value="@ViewBag.CategoryID" style="display:none" />
+
         <div class="form-group">
             @Html.LabelFor(model => model.PName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

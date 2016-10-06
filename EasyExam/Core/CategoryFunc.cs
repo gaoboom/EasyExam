@@ -45,12 +45,16 @@ namespace EasyExam.Core
             return _resp;
         }
 
-        public Response Modify(Category Cate)
+        public Response Modify(Category cate)
         {
             Response _resp = new Response();
             Category _cateToBeChanged = new Category();
-            _cateToBeChanged=dbContext.Categories.Find(Cate.CategoryID);
-            _cateToBeChanged = Cate;
+            _cateToBeChanged=dbContext.Categories.Find(cate.CategoryID);
+            _cateToBeChanged.Name=cate.Name;
+            _cateToBeChanged.ParentID = cate.ParentID;
+            _cateToBeChanged.Description = cate.Description;
+            _cateToBeChanged.Order = cate.Order;
+            _cateToBeChanged.Level = cate.Level;
             dbContext.SaveChanges();
             return _resp;
         }
