@@ -218,5 +218,31 @@ namespace EasyExam.Controllers
                 return View(cateVM);
             }
         }
+
+        /// <summary>
+        /// 删除栏目get
+        /// </summary>
+        /// <param name="id">栏目ID，如果为空，返回栏目首页</param>
+        /// <returns></returns>
+        [AdminAuthorize]
+        public ActionResult DeleteCategory(int? id)
+        {
+            ViewBag.Title = "删除栏目";
+            CategoryFunc cf = new CategoryFunc();
+            Category _cate = new Category();
+            if (id == null || id.GetType() != typeof(int))
+            {
+                return RedirectToAction("Category", "Admin");
+            }
+            else if (cf.Find((int)id) == null)
+            {
+                return RedirectToAction("Category", "Admin");
+            }
+            else
+            {
+                _cate = cf.Find((int)id);
+                return View(_cate);
+            }
+        }
     }
 }

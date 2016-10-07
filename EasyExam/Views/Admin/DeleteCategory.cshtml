@@ -1,0 +1,56 @@
+﻿@model EasyExam.Core.Category
+
+@{
+    Layout = "_AdminPannelLayout.cshtml";
+}
+
+@section SideNav{@Html.Partial("SideNavPartialView")}
+<div class="col-sm-12">
+    <h4>确认删除栏目?</h4>
+    <hr />
+    <table data-toggle="table" data-show-header="false" id="category-table">
+        <thead>
+            <tr>
+                <th>属性</th>
+                <th>值</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Name)</td>
+                <td>@Html.DisplayFor(model => model.Name)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.ParentID)</td>
+                <td>@Html.DisplayFor(model => model.ParentID)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Description)</td>
+                <td>@Html.DisplayFor(model => model.Description)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Order)</td>
+                <td>@Html.DisplayFor(model => model.Order)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Level)</td>
+                <td>@Html.DisplayFor(model => model.Level)</td>
+            </tr>
+
+        </tbody>
+    </table>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="确认删除" class="btn btn-danger" />
+        </div>
+    }
+
+</div>
+
