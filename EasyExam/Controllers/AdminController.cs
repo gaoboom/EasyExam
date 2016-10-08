@@ -244,5 +244,28 @@ namespace EasyExam.Controllers
                 return View(_cate);
             }
         }
+
+        /// <summary>
+        /// 删除栏目Post
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [AdminAuthorize,ValidateAntiForgeryToken,HttpPost,ActionName("DeleteCategory")]
+        public ActionResult DeleteCategoryConfirmed(int id)
+        {
+            ViewBag.Title = "删除栏目";
+            CategoryFunc cf = new CategoryFunc();
+            Response _resp = cf.Delete(id);
+            if(_resp.Code==1)//无法删除
+            {
+                ModelState.AddModelError("ParentID", _resp.Message);
+                Category cate = cf.Find(id);
+                return View(cate);
+            }
+            else//删除成功
+            {
+                return RedirectToAction("Category", "Admin");
+            }
+        }
     }
 }
