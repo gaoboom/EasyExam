@@ -59,11 +59,23 @@ namespace EasyExam.Core
             return _resp;
         }
 
-        public Response Delete(Category deleCate)
+        public Response Delete(int id)
         {
             Response _resp = new Response();
-            dbContext.Categories.Remove(deleCate);
-            dbContext.SaveChanges();
+            Category _cate = new Category();
+            //检查是否含有子栏目
+            if(dbContext.Categories.Where(c=>c.ParentID==id).Count()>0)
+            {
+                //含有子栏目
+                _resp.Code = 1;
+                _resp.Message = "当前栏目含有子栏目，无法删除";
+            }
+            else
+            {
+                _cate = dbContext.Categories.Find(id);
+                dbContext.Categories.Remove(_cate);
+                dbContext.SaveChanges();
+            }
             return _resp;
         }
 
