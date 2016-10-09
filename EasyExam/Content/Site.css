@@ -27,6 +27,8 @@ textarea {
 footer{text-align:center; height:40px;}
 footer p{margin:0;}
 
+/*User Control Pannel Common*/
+.margin-top-20{margin-top:20px;}
 
 /*User Control Pannel Side Bar*/
 .sidebar{
@@ -50,3 +52,4 @@ footer p{margin:0;}
 /*Admin Control Pannel Category Table*/
 #category-table{vertical-align:central;}
 #category-table input{width:40px;text-align:center;}
+#category-table .btn{margin-top:10px;}
