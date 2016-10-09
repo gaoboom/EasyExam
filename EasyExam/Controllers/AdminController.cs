@@ -215,6 +215,7 @@ namespace EasyExam.Controllers
             }
             else
             {
+                ViewBag.CategoryID = categoryID;
                 return View(cateVM);
             }
         }
