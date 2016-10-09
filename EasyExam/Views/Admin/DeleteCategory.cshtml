@@ -46,12 +46,13 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="确认删除" class="btn btn-danger" />
+        <input type="submit" value="确认删除" class="btn btn-danger margin-top-20" />
+    }
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger margin-top-20">
             @Html.ValidationSummary()
         </div>
     }
-
 </div>
 
