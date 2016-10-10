@@ -268,5 +268,15 @@ namespace EasyExam.Controllers
                 return RedirectToAction("Category", "Admin");
             }
         }
+
+        /// <summary>
+        /// 试题管理首页
+        /// </summary>
+        /// <returns></returns>
+        [AdminAuthorize]
+        public ActionResult Question()
+        {
+            return View();
+        }
     }
 }
