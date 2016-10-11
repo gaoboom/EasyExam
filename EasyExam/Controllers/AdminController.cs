@@ -278,5 +278,15 @@ namespace EasyExam.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// 用户管理首页
+        /// </summary>
+        /// <returns></returns>
+        [AdminAuthorize]
+        public ActionResult UserManage()
+        {
+            return View();
+        }
     }
 }
